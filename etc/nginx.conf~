@@ -1,0 +1,24 @@
+upstream backend {
+    server 0.0.0.0:8080;
+}
+upstream app {
+    server 0.0.0.0:8000;
+}
+server {
+    listen 80 default_server;
+
+server {
+    listen 80;
+    location ^~ /uploads/ {
+	root /home/box/web;
+    }
+    location ~* ^.+\.\w+$ {
+        root /home/box/web/public;
+    }
+    location / {
+        proxy_pass http://app;
+    }
+    location /hello/ {
+	proxy_pass http://backend;
+    }
+}

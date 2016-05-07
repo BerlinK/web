@@ -1,0 +1,14 @@
+def wsgi_app( environ, start_response ) :
+<<<<<<< HEAD
+    
+=======
+    headers = [( 'Content-Type', 'text/plain')]
+    status = '200 OK'
+    body = ''
+    qstrs = environ['QUERY_STRING'].split( '&' )
+
+    for i in qstrs :
+        body += i + "\n"    
+    start_response( status, headers )
+    return body
+>>>>>>> cb5dc072fb2beb965ca890603e4c3ef2aa193129

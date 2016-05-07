@@ -1,0 +1,5 @@
+sudo ln /home/box/web/app/myapp/web/etc/nginx.conf /etc/nginx/sites-enabled/test.conf
+sudo /etc/init.d/nginx restart
+sudo gunicorn hello:wsgi_app -b 0.0.0.0:8080 -D
+cd ask/
+sudo gunicorn ask.wsgi:application -b 0.0.0.0:8000 -D
